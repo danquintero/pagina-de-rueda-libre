@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- adapta la página al ancho del celular; sin esto los breakpoints no funcionan bien -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo con Bootstrap | Rueda Libre</title>
+
+  <!-- CSS de Bootstrap por CDN: aquí están todas las clases (container, row, col-*, d-flex...) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ==================== FLOTA (MiniReto 5) ==================== -->
+  <section id="flota">
+
+    <!-- container: centra el contenido y limita su ancho (como tu main con max-width + margin auto) -->
+    <div class="container">
+      <h2>Nuestra flota</h2>
+
+      <!-- row: agrupa las columnas (es un Flexbox con wrap)
+           g-4: espacio (gutter) entre columnas y filas, nivel 4 -->
+      <div class="row g-4">
+
+        <!-- col-*: cuántas de las 12 partes ocupa cada tarjeta, según el ancho:
+             col-12    = celular: 12/12 → 1 columna
+             col-sm-6  = desde 576 px: 6/12 → 2 columnas
+             col-lg-4  = desde 992 px: 4/12 → 3 columnas
+             col-xl-3  = desde 1200 px: 3/12 → 4 columnas
+             estas 4 clases se repiten igual en las 7 columnas -->
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <!-- img-fluid: la foto nunca se pasa del ancho de su columna (max-width: 100%; height: auto) -->
+            <img class="img-fluid" src="../img/urbana-clasica.jpg" alt="Bicicleta urbana clásica">
+            <h3>Urbana Clásica</h3>
+            <p>Cómoda y liviana para las ciclorrutas.</p>
+            <p class="precio">$10.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/urbana-plegable.jpg" alt="Bicicleta urbana plegable">
+            <h3>Urbana Plegable</h3>
+            <p>Se dobla en segundos; ideal para combinar con el metro.</p>
+            <p class="precio">$12.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/montana-trail.jpg" alt="Bicicleta de montaña Trail">
+            <h3>Montaña Trail</h3>
+            <p>Suspensión delantera y 21 cambios para las subidas.</p>
+            <p class="precio">$15.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/gravel-aventura.jpg" alt="Bicicleta Gravel Aventura">
+            <h3>Gravel Aventura</h3>
+            <p>Para rutas mixtas de asfalto y destapado.</p>
+            <p class="precio">$18.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/electrica-urbana.jpg" alt="Bicicleta eléctrica urbana">
+            <h3>Eléctrica Urbana</h3>
+            <p>Asistencia eléctrica con 45 km de autonomía.</p>
+            <p class="precio">$25.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/infantil.jpg" alt="Bicicleta infantil">
+            <h3>Infantil</h3>
+            <p>Para niños de 6 a 10 años.</p>
+            <p class="precio">$8.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+        <!-- séptimo modelo: la grilla lo acomoda sola en la fila siguiente -->
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+          <article class="tarjeta">
+            <img class="img-fluid" src="../img/tandem.jpg" alt="Bicicleta tándem">
+            <h3>Tándem</h3>
+            <p>Para dos personas; perfecta para pasear en pareja.</p>
+            <p class="precio">$20.000 / hora</p>
+            <a href="../paginas/reservas.html">Reservar</a>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== BENEFICIOS (MiniReto 6, pasos 1 y 2) ==================== -->
+  <!-- py-5: padding arriba y abajo (la "p" es padding, "y" es vertical, 5 es el nivel más grande) -->
+  <section id="beneficios" class="py-5">
+    <div class="container">
+
+      <!-- text-center: texto centrado
+           fw-bold: negrita (font-weight)
+           mb-2: margin-bottom nivel 2 -->
+      <h2 class="text-center fw-bold mb-2">¿Por qué Rueda Libre?</h2>
+
+      <!-- lead: párrafo destacado, más grande
+           text-secondary: gris de Bootstrap
+           mb-5: separación grande hacia abajo -->
+      <p class="lead text-center text-secondary mb-5">Todo lo que incluye tu alquiler.</p>
+
+      <div class="row g-4">
+
+        <!-- col-12 col-md-6 col-lg-3: 1 columna en celular, 2 desde 768 px, 4 desde 992 px -->
+        <div class="col-12 col-md-6 col-lg-3 text-center">
+          <!-- jerarquía: dato grande y verde → título mediano → descripción en gris
+               fs-2 / fs-5: tamaño de letra (fs-1 es el mayor)
+               text-success: verde de Bootstrap
+               mb-1, mb-0: márgenes pequeños -->
+          <p class="fs-2 fw-bold text-success mb-1">100%</p>
+          <h3 class="fs-5 fw-bold mb-2">Bicicletas revisadas</h3>
+          <p class="text-secondary mb-0">Revisamos frenos, cambios y llantas en cada alquiler.</p>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 text-center">
+          <p class="fs-2 fw-bold text-success mb-1">Incluidos</p>
+          <h3 class="fs-5 fw-bold mb-2">Casco y candado</h3>
+          <p class="text-secondary mb-0">Todas las reservas salen con casco y candado, sin costo extra.</p>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 text-center">
+          <p class="fs-2 fw-bold text-success mb-1">Certificados</p>
+          <h3 class="fs-5 fw-bold mb-2">Guías locales</h3>
+          <p class="text-secondary mb-0">Recorre la ciudad con guías con certificación.</p>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 text-center">
+          <p class="fs-2 fw-bold text-success mb-1">3 sedes</p>
+          <h3 class="fs-5 fw-bold mb-2">Puntos de devolución</h3>
+          <p class="text-secondary mb-0">Devuelve tu bicicleta en la sede que te quede más cerca.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== FRANJA FINAL (MiniReto 6, pasos 3 a 5) ==================== -->
+  <!-- text-bg-success: fondo verde y texto de contraste automático (blanco)
+       py-4: padding arriba y abajo -->
+  <section id="listo-para-rodar" class="text-bg-success py-4">
+    <div class="container">
+
+      <!-- d-flex: activa Flexbox (display: flex)
+           flex-column: en celular, los hijos van en columna
+           flex-md-row: desde 768 px, los hijos van en fila
+           align-items-center: los centra en el eje transversal
+           justify-content-md-between: desde 768 px, reparte el espacio entre ellos
+           gap-3: espacio entre hijos
+           text-center / text-md-start: centrado en celular, a la izquierda desde md -->
+      <div
+        class="d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-3 text-center text-md-start">
+
+        <!-- hijo 1: el texto (fs-3: grande, fw-bold: negrita, mb-0: sin margen abajo) -->
+        <p class="fs-3 fw-bold mb-0">¿Listo para rodar?</p>
+
+        <!-- hijo 2: elemento decorativo
+             d-none: oculto por defecto (celular)
+             d-md-block: visible desde 768 px
+             rounded: esquinas redondeadas
+             object-fit-cover: la foto llena su caja sin deformarse
+             alt="": es solo decoración, el lector de pantalla la ignora -->
+        <img class="d-none d-md-block rounded object-fit-cover" src="../img/caption.jpg" alt="" width="160" height="90">
+
+        <!-- hijo 3: enlace destacado, solo con utilidades de color y espaciado
+             bg-warning: fondo amarillo de Bootstrap
+             text-dark: texto oscuro (buen contraste sobre amarillo)
+             fw-bold: negrita
+             px-4 / py-3: relleno horizontal y vertical
+             text-decoration-none: quita el subrayado -->
+        <a class="bg-warning text-dark fw-bold px-4 py-3 text-decoration-none" href="../paginas/reservas.html">Reservar
+          ahora</a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript de Bootstrap (bundle): va al final del body. Lo necesitarás para navbar y modal -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- adapta la página al ancho del celular -->
+  <meta name="description"
+    content="Reserva tu bicicleta en Rueda Libre: formulario de reserva, datos de contacto y horario de atención.">
+  <title>Reservas | Rueda Libre</title>
+
+  <!-- fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap primero y tu hoja después ("../" sube una carpeta: esta página está dentro de paginas/) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+  <!-- enlace para saltar al contenido con el teclado (oculto hasta que se enfoca con Tab) -->
+  <a class="saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- encabezado: aquí el nombre va en <p> porque el h1 de esta página es "Reserva tu bicicleta" -->
+  <header>
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-md-between gap-2 py-2">
+      <p class="marca fw-bold fs-3 mb-0">Rueda Libre</p>
+      <nav aria-label="Principal">
+        <ul id="menu" class="d-flex flex-wrap justify-content-center gap-2 list-unstyled m-0 p-0">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="tarifas.html">Tarifas y rutas</a></li>
+          <!-- class="activo" va en el enlace de ESTA página -->
+          <li><a class="activo" href="reservas.html" aria-current="page">Reservas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="container">
+    <h1>Reserva tu bicicleta</h1>
+
+    <!-- layout 8:4: desde md el formulario ocupa 8 partes de 12 y contacto/horario 4; en móvil se apilan -->
+    <div class="row g-4">
+
+      <section class="col-12 col-md-8">
+        <h2>Formulario de reserva</h2>
+        <p>Todos los campos son obligatorios, excepto el recorrido guiado y los comentarios.</p>
+
+        <!-- todo lo de adentro se envía junto al pulsar "Enviar reserva" -->
+        <form action="#" method="post">
+
+          <!-- grupo 1: datos personales -->
+          <fieldset>
+            <legend>Tus datos</legend>
+
+            <p>
+              <!-- el for de la etiqueta debe ser igual al id del campo -->
+              <label for="nombre">Nombre completo</label>
+              <input class="control" type="text" id="nombre" name="nombre" required minlength="3" autocomplete="name">
+            </p>
+
+            <!-- fila de campos cortos con la grilla: dos columnas desde sm (col-sm-6 = 6 de 12)
+                 gx-3: solo espacio horizontal entre columnas (el vertical lo da el margen del párrafo) -->
+            <div class="row gx-3">
+              <div class="col-12 col-sm-6">
+                <p>
+                  <label for="documento">Número de documento</label>
+                  <!-- pattern: solo dígitos, entre 6 y 10 -->
+                  <input class="control" type="text" id="documento" name="documento" inputmode="numeric" required
+                    pattern="[0-9]{6,10}" title="Solo números, entre 6 y 10 dígitos. Ejemplo: 1020304050"
+                    aria-describedby="ayuda-documento">
+                  <small id="ayuda-documento">Solo números, de 6 a 10 dígitos.</small>
+                </p>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <p>
+                  <label for="celular">Celular</label>
+                  <!-- pattern: empieza por 3 y tiene 10 dígitos en total -->
+                  <input class="control" type="tel" id="celular" name="celular" required pattern="3[0-9]{9}"
+                    title="10 dígitos y debe empezar por 3. Ejemplo: 3001234567" autocomplete="tel"
+                    aria-describedby="ayuda-celular">
+                  <small id="ayuda-celular">10 dígitos, empieza por 3. Ejemplo: 3001234567</small>
+                </p>
+              </div>
+            </div>
+
+            <p>
+              <label for="correo">Correo electrónico</label>
+              <!-- type="email" revisa que tenga forma de correo -->
+              <input class="control" type="email" id="correo" name="correo" required autocomplete="email">
+            </p>
+          </fieldset>
+
+          <!-- grupo 2: datos del alquiler -->
+          <fieldset>
+            <legend>Tu alquiler</legend>
+
+            <p>
+              <label for="fecha">Fecha del alquiler</label>
+              <!-- min y max limitan las fechas del calendario -->
+              <input class="control" type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
+            </p>
+
+            <!-- radios con el mismo name: solo se elige uno -->
+            <fieldset>
+              <legend>Tipo de bicicleta</legend>
+              <p class="opcion">
+                <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
+                <label for="tipo-urbana">Urbana</label>
+              </p>
+              <p class="opcion">
+                <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="montana" required>
+                <label for="tipo-montana">Montaña</label>
+              </p>
+              <p class="opcion">
+                <input type="radio" id="tipo-electrica" name="tipo_bicicleta" value="electrica" required>
+                <label for="tipo-electrica">Eléctrica</label>
+              </p>
+            </fieldset>
+
+            <!-- otra fila de campos cortos: plan y cantidad lado a lado desde sm -->
+            <div class="row gx-3">
+              <div class="col-12 col-sm-6">
+                <p>
+                  <label for="plan">Plan</label>
+                  <!-- desplegable obligatorio: la primera opción vacía obliga a elegir una real -->
+                  <select class="control" id="plan" name="plan" required>
+                    <option value="">Selecciona un plan</option>
+                    <option value="1-hora">1 hora</option>
+                    <option value="medio-dia">Medio día (4 h)</option>
+                    <option value="dia-completo">Día completo</option>
+                  </select>
+                </p>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <p>
+                  <label for="cantidad">Cantidad de bicicletas</label>
+                  <!-- solo números entre 1 y 6 -->
+                  <input class="control" type="number" id="cantidad" name="cantidad" required min="1" max="6" step="1">
+                </p>
+              </div>
+            </div>
+
+            <p>
+              <label for="recorrido">Recorrido guiado</label>
+              <!-- desplegable opcional: sin required y con "Ninguno" por defecto -->
+              <select class="control" id="recorrido" name="recorrido">
+                <option value="ninguno">Ninguno</option>
+                <option value="rio-parques">Río y Parques</option>
+                <option value="sabores-barrio">Sabores de Barrio</option>
+                <option value="las-palmas">Reto Las Palmas</option>
+              </select>
+            </p>
+          </fieldset>
+
+          <!-- grupo 3: confirmación -->
+          <fieldset>
+            <legend>Confirmación</legend>
+
+            <p>
+              <label for="comentarios">Comentarios (opcional, máximo 300 caracteres)</label>
+              <!-- texto largo: rows es el alto en líneas; maxlength limita los caracteres -->
+              <textarea class="control" id="comentarios" name="comentarios" rows="4" maxlength="300"></textarea>
+            </p>
+
+            <p class="opcion">
+              <!-- casilla obligatoria: hay que marcarla para poder enviar -->
+              <input type="checkbox" id="politicas" name="politicas" value="aceptadas" required>
+              <label for="politicas">Acepto las políticas de alquiler</label>
+            </p>
+          </fieldset>
+
+          <!-- type="submit" envía el formulario y activa las validaciones -->
+          <p><button class="boton" type="submit">Enviar reserva</button></p>
+
+        </form>
+      </section>
+
+      <!-- columna derecha: contacto y horario (4 de 12 desde md) -->
+      <aside class="col-12 col-md-4">
+        <h2>Contacto</h2>
+        <p>
+          ¿Prefieres escribirnos? Hazlo a
+          <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.
+        </p>
+
+        <h2>Horario de atención</h2>
+        <!-- lista de definiciones: dt es el término y dd su descripción -->
+        <dl>
+          <dt>Lunes a viernes</dt>
+          <dd>7:00 a. m. a 7:00 p. m.</dd>
+
+          <dt>Sábados, domingos y festivos</dt>
+          <dd>6:00 a. m. a 2:00 p. m.</dd>
+        </dl>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- pie: tres bloques en columna en móvil y en fila desde md; border-top: línea arriba -->
+  <footer class="mt-5 py-4 border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-md-between gap-3">
+      <div>
+        <strong>Rueda Libre</strong><br>
+        Medellín, Colombia<br>
+        &copy; 2026
+      </div>
+      <div>
+        <strong>Contacto</strong><br>
+        <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>
+      </div>
+      <div>
+        <strong>Horario</strong><br>
+        Lunes a viernes 7:00 a. m. a 7:00 p. m.<br>
+        Sábados, domingos y festivos 6:00 a. m. a 2:00 p. m.
+      </div>
+    </div>
+  </footer>
+
+  <!-- botón flotante de WhatsApp: fijo abajo a la derecha -->
+  <a class="whatsapp" href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer"
+    aria-label="Escribir por WhatsApp (abre en otra pestaña)">WhatsApp</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

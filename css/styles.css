@@ -1,0 +1,247 @@
+/* ===== VARIABLES ===== */
+:root {
+  --verde-ruta: #1E7A4F;
+  --naranja-pedal: #F39A2B;
+  --azul-noche: #14213D;
+  --crema: #FAF6EF;
+  --gris-asfalto: #5B6470;
+  --blanco: #FFFFFF;
+
+  --fuente-titulos: "Montserrat", Arial, sans-serif;
+  --fuente-texto: "Open Sans", Arial, sans-serif;
+
+  --espacio-s: 0.5rem;
+  --espacio-m: 1rem;
+  --espacio-l: 2rem;
+}
+
+/* ===== BASE (identidad: fuentes, colores y fondo) ===== */
+
+/* va después de Bootstrap, así que gana sobre su fuente y su fondo */
+body {
+  font-family: var(--fuente-texto);
+  color: var(--azul-noche);
+  background-color: var(--crema);
+  /* deja espacio para que WhatsApp no tape el final */
+  padding-bottom: 4rem;
+}
+
+/* fuente de títulos en todos los encabezados */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  /* Bootstrap los pone en 500; Montserrat se carga en 700 */
+  font-weight: 700;
+}
+
+/* ===== MENÚ ===== */
+
+/* enlaces del menú: color gris y sin subrayado */
+#menu a {
+  color: var(--gris-asfalto);
+  text-decoration: none;
+  padding: var(--espacio-s) var(--espacio-m);
+}
+
+/* marca la página actual; lleva #menu para ganarle a #menu a */
+#menu a.activo {
+  color: var(--verde-ruta);
+  font-weight: 600;
+}
+
+/* el enlace cambia de color al pasar el mouse */
+#menu a:hover {
+  color: var(--azul-noche);
+  background-color: var(--naranja-pedal);
+}
+
+/* ===== COMPONENTES ===== */
+
+/* enlace o botón de llamada a la acción */
+.boton {
+  display: inline-block;
+  background-color: var(--naranja-pedal);
+  color: var(--azul-noche);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--espacio-m) var(--espacio-l);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+/* esto sirve para mostrar que el botón es interactivo al pasar el cursor */
+.boton:hover {
+  background-color: var(--azul-noche);
+  color: var(--blanco);
+}
+
+/* enlace "Saltar al contenido": fuera de la pantalla hasta que recibe el foco con Tab */
+.saltar {
+  position: absolute;
+  left: -999px;
+}
+
+.saltar:focus {
+  left: var(--espacio-m);
+  top: var(--espacio-m);
+  background-color: var(--blanco);
+  color: var(--azul-noche);
+  padding: var(--espacio-s) var(--espacio-m);
+}
+
+/* tarjeta: relleno, borde y esquinas redondeadas */
+.tarjeta {
+  /* referencia para la etiqueta "Nuevo" */
+  position: relative;
+  padding: var(--espacio-m);
+  border: 1px solid var(--gris-asfalto);
+  border-radius: 0.5rem;
+}
+
+/* la imagen ocupa todo el ancho de su tarjeta */
+.tarjeta img {
+  width: 100%;
+}
+
+/* fotos de la flota completas y centradas, sin recortar */
+#flota .tarjeta img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+/* TEMPORAL: estas 4 fotos traen una franja negra abajo en el archivo.
+   Se muestra solo la parte de arriba. Borrar este bloque cuando las fotos estén corregidas */
+#flota .tarjeta img[src*="gravel-aventura"],
+#flota .tarjeta img[src*="electrica-urbana"],
+#flota .tarjeta img[src*="infantil"],
+#flota .tarjeta img[src*="tandem"] {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* etiqueta "Nuevo" anclada a la esquina de la tarjeta */
+.etiqueta-nuevo {
+  position: absolute;
+  top: var(--espacio-s);
+  right: var(--espacio-s);
+  background-color: var(--naranja-pedal);
+  color: var(--azul-noche);
+  font-weight: 600;
+  padding: 0.25rem var(--espacio-s);
+}
+
+/* botón de WhatsApp siempre visible abajo a la derecha */
+.whatsapp {
+  position: fixed;
+  right: var(--espacio-m);
+  bottom: var(--espacio-m);
+  background-color: var(--verde-ruta);
+  color: var(--blanco);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--espacio-s) var(--espacio-m);
+  border-radius: 0.5rem;
+}
+
+.whatsapp:hover {
+  background-color: var(--azul-noche);
+}
+
+/* franja "¿Listo para rodar?": verde de marca con texto blanco (la distribución la da Bootstrap) */
+.franja {
+  background-color: var(--verde-ruta);
+  color: var(--blanco);
+}
+
+/* dato destacado de cada beneficio, en verde de marca */
+.dato {
+  color: var(--verde-ruta);
+}
+
+/* texto de apoyo en gris de marca */
+.suave {
+  color: var(--gris-asfalto);
+}
+
+/* ===== TABLAS ===== */
+
+/* Bootstrap manda el título de la tabla abajo; aquí vuelve arriba */
+caption {
+  caption-side: top;
+  color: var(--azul-noche);
+}
+
+/* espacio y borde en cada celda */
+th,
+td {
+  padding: 0.25rem var(--espacio-s);
+  font-size: 0.875rem;
+  border: 1px solid var(--gris-asfalto);
+  text-align: left;
+}
+
+/* encabezado con fondo azul y texto blanco (contraste alto) */
+thead th {
+  background-color: var(--azul-noche);
+  color: var(--blanco);
+}
+
+/* ===== FORMULARIO ===== */
+
+/* Bootstrap quita el borde del fieldset; aquí se devuelve */
+fieldset {
+  border: 1px solid var(--gris-asfalto);
+  border-radius: 0.5rem;
+  margin-bottom: var(--espacio-l);
+  padding: var(--espacio-m);
+}
+
+/* Bootstrap deja la leyenda enorme; aquí vuelve a un tamaño de título pequeño */
+legend {
+  font-family: var(--fuente-titulos);
+  font-size: 1.125rem;
+}
+
+/* cada etiqueta queda encima de su campo */
+form label {
+  display: block;
+  margin-bottom: var(--espacio-s);
+}
+
+/* en radios y casilla la etiqueta va al lado del círculo */
+.opcion label {
+  display: inline;
+  margin-bottom: 0;
+}
+
+/* campos a todo el ancho disponible */
+.control {
+  display: block;
+  width: 100%;
+  padding: var(--espacio-s);
+}
+
+/* ===== FOCO VISIBLE ===== */
+
+/* contorno visible al llegar con Tab o al hacer clic */
+#menu a:focus,
+.saltar:focus,
+.boton:focus,
+.whatsapp:focus,
+.control:focus,
+.opcion input:focus {
+  outline: 3px solid var(--azul-noche);
+  outline-offset: 2px;
+}
+
+/* ===== TABLET (desde 768 px) ===== */
+@media (min-width: 768px) {
+
+  th,
+  td {
+    padding: var(--espacio-s) var(--espacio-m);
+    font-size: 1rem;
+  }
+}
